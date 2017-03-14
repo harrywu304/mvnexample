@@ -1,0 +1,1 @@
+# mvnexample用于演示一些Maven的高级特性的使用方法
