@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.pub</groupId>
+	<artifactId>mvnprofile</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>mvnprofile</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- 
+		<maven.resources.overwrite>true</maven.resources.overwrite> 
+		 -->
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>mvnprofile</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources_${env.name}</directory>
+			</resource>
+		</resources>
+	</build>
+
+	<profiles>
+		<profile>
+			<!-- 本地环境 -->
+			<id>local</id>
+			<properties>
+				<env.name>local</env.name>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>			
+		</profile>
+		<profile>
+			<!-- 开发环境 -->
+			<id>dev</id>
+			<properties>
+				<env.name>dev</env.name>
+			</properties>
+		</profile>
+	</profiles>
+</project>
